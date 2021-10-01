@@ -1,4 +1,7 @@
 package com.example.mvvm2.ui
 
-class MainViewModel {
+import androidx.lifecycle.ViewModel
+
+class MainViewModel :ViewModel() {
+
 }
