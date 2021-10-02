@@ -1,12 +1,12 @@
-package com.example.mvvm2.ui
+package com.example.mvvm2.ui.main
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvm2.data.model.Movie
 import com.example.mvvm2.databinding.ItemMainBinding
+import com.example.mvvm2.ui.moive.MovieActivity
 
 class MainRecyclerAdapter : RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>() {
     var movies = ArrayList<Movie>()

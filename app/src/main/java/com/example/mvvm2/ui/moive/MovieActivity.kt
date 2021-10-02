@@ -1,13 +1,11 @@
-package com.example.mvvm2.ui
+package com.example.mvvm2.ui.moive
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm2.R
 import com.example.mvvm2.data.model.Movie
-import com.example.mvvm2.databinding.ActivityMainBinding
 import com.example.mvvm2.databinding.ActivityMovieBinding
 
 class MovieActivity : AppCompatActivity() {

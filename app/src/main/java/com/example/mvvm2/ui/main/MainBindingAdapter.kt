@@ -1,4 +1,4 @@
-package com.example.mvvm2.ui
+package com.example.mvvm2.ui.main
 
 import android.util.Log
 import android.widget.ImageView

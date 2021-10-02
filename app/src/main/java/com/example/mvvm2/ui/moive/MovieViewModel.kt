@@ -1,4 +1,4 @@
-package com.example.mvvm2.ui
+package com.example.mvvm2.ui.moive
 
 import androidx.lifecycle.ViewModel
 import com.example.mvvm2.data.model.Movie
