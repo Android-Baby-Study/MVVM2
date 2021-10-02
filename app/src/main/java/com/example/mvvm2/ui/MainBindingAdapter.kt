@@ -21,7 +21,7 @@ fun setMovie(recyclerView: RecyclerView, movies:ArrayList<Movie>?){
     }
     if (movies != null) {
         (recyclerView.adapter as MainRecyclerAdapter).movies = movies
-        (recyclerView.adapter as MainRecyclerAdapter).setItem(movies)
+        (recyclerView.adapter as MainRecyclerAdapter).notifyDataSetChanged()
     }
 }
 

@@ -1,5 +1,6 @@
 package com.example.mvvm2.ui
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -31,6 +32,14 @@ class MainRecyclerAdapter : RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>
     class ViewHolder(private val binding: ItemMainBinding) :RecyclerView.ViewHolder(binding.root) {
         fun bind (movie:Movie) {
             binding.movie = movie
+            binding.root.setOnClickListener {
+                val movieIntent = Intent(itemView.context, MovieActivity::class.java).apply {
+                    putExtra("movie", movie)
+                }
+                itemView.context.startActivity(movieIntent)
+            }
         }
+
     }
+
 }
