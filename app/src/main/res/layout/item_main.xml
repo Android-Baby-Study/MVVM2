@@ -14,30 +14,34 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="200dp"
+        android:background="#3F51B5">
 
         <ImageView
             android:id="@+id/movie_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind_movie_image="@{movie.image}"/>
+
+        <TextView
+            android:id="@+id/movie_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{movie.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/movie_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/movie_title"
+            android:id="@+id/movie_user_rating_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{movie.userRating}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/movie_image"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <TextView
-            android:id="@+id/moview_star"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/movie_title"
-            app:layout_constraintStart_toEndOf="@id/movie_image"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/movie_title_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
