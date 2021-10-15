@@ -1,23 +1,23 @@
 package com.example.mvvm2.ui.main
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mvvm2.data.model.Movie
 import com.example.mvvm2.data.model.MovieResponse
-import com.example.mvvm2.data.repository.BaseRetrofit
-import com.example.mvvm2.data.repository.MovieRetrofit
+import com.example.mvvm2.data.repository.Repository
+import com.example.mvvm2.data.repository.RepositoryImpl
+import com.example.mvvm2.data.repository.remote.BaseRetrofit
+import com.example.mvvm2.data.repository.remote.MovieRetrofit
 import retrofit2.Call
 import retrofit2.Response
 
 class MainViewModel :ViewModel() {
-    var query:String = "Harry potter"
+    var query:String = ""
     val movieList: MutableLiveData<ArrayList<Movie>> = MutableLiveData()
+    val repository: RepositoryImpl = RepositoryImpl()
 
     fun getMoveList () {
-        val api = BaseRetrofit.retrofit.create(MovieRetrofit::class.java).getMovieList(query)
-
-        api.enqueue(object : retrofit2.Callback<MovieResponse> {
+        repository.getMovieList(query).enqueue(object : retrofit2.Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful){
                     movieList.value = response.body()!!.items

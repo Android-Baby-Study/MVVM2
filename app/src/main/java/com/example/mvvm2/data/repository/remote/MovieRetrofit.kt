@@ -1,4 +1,4 @@
-package com.example.mvvm2.data.repository
+package com.example.mvvm2.data.repository.remote
 
 import com.example.mvvm2.data.model.MovieResponse
 import retrofit2.Call
