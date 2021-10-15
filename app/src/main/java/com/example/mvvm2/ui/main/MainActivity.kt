@@ -1,11 +1,13 @@
 package com.example.mvvm2.ui.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm2.R
 import com.example.mvvm2.databinding.ActivityMainBinding
+import com.example.mvvm2.ui.moive.MovieActivity
 import javax.security.auth.callback.Callback
 import kotlin.math.log
 
@@ -28,5 +30,11 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.vm = vm
         binding.lifecycleOwner = this
+        binding.mainMovieRecycler.adapter = MainRecyclerAdapter(){
+            val movieIntent = Intent(this, MovieActivity::class.java).apply {
+                putExtra("movie", it)
+            }
+            startActivity(movieIntent)
+        }
     }
 }

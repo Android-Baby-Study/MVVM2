@@ -11,14 +11,6 @@ import com.example.mvvm2.data.model.Movie
 
 @BindingAdapter("bind_movie_list")
 fun setMovie(recyclerView: RecyclerView, movies:ArrayList<Movie>?){
-
-    if (recyclerView.adapter === null) {
-
-        val lm = LinearLayoutManager(recyclerView.context)
-        val adapter = MainRecyclerAdapter()
-        recyclerView.layoutManager = lm
-        recyclerView.adapter = adapter
-    }
     if (movies != null) {
         (recyclerView.adapter as MainRecyclerAdapter).movies = movies
         (recyclerView.adapter as MainRecyclerAdapter).notifyDataSetChanged()

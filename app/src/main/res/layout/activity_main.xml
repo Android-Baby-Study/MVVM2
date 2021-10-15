@@ -20,7 +20,7 @@
             android:text = "@={vm.query}"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            app:layout_constraintEnd_toStartOf="@+id/search_btn"
+            app:layout_constraintEnd_toStartOf="@+id/main_search_btn"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
