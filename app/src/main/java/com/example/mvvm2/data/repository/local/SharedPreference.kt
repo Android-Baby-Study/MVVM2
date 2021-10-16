@@ -2,28 +2,34 @@ package com.example.mvvm2.data.repository.local
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
+import com.example.mvvm2.App
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-object SharedPreference {
-    private const val PREF_NAME = "PREF"
-    private const val PREF_MODE = Context.MODE_PRIVATE
-    private lateinit var pref:SharedPreferences
+class SharedPreference(context: Context) {
+    private val PREF_NAME = "PREF"
+    private val PREF_MODE = Context.MODE_PRIVATE
+    private var pref: SharedPreferences = context.getSharedPreferences(PREF_NAME, PREF_MODE)
 
-    fun init(context: Context) {
-        pref = context.getSharedPreferences(PREF_NAME, PREF_MODE)
+
+    private val HISTORY = "HISTORY"
+    fun getHistory(): ArrayList<String>? {
+        val history = pref.getString(HISTORY, null)
+        return Gson().fromJson(history, object : TypeToken<ArrayList<String>>() {}.type)
     }
 
-    private const val HISTORY_KEY = "HISTORY"
-    fun getHistory(): ArrayList<String>{
-        val history = pref.getString(HISTORY_KEY, null)
-        return Gson().fromJson(history, object : TypeToken<ArrayList<String>>() {}.type)}
-    fun setHistory(h:String) {
-        val history:ArrayList<String> = getHistory()
-        if (history.size == 5) {
-            history.removeAt(-1)
+    fun setHistory(h: String) {
+        var history: ArrayList<String>? = getHistory()
+        if (history != null) {
+            if (history.size == 5) {
+                history.removeAt(0)
+            }
+        }
+        else {
+            history = arrayListOf()
         }
         history.add(h)
-        pref.edit().putString(HISTORY_KEY, Gson().toJson(history)).apply()
+        pref.edit().putString(HISTORY, Gson().toJson(history)).apply()
     }
 }

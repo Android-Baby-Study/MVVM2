@@ -11,7 +11,7 @@ interface Repository {
     val localDataSource: LocalDataSourceImpl
 
     fun getMovieList(query: String): Call<MovieResponse>
-    fun getHistory(): ArrayList<String>
+    fun getHistory(): ArrayList<String>?
     fun setHistory(title:String)
 }
 
@@ -25,7 +25,7 @@ class RepositoryImpl() : Repository {
         return remoteDataSource.getMovieList(query)
     }
 
-    override fun getHistory(): ArrayList<String> {
+    override fun getHistory(): ArrayList<String>? {
         return localDataSource.getHistory()
     }
 
