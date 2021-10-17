@@ -1,5 +1,6 @@
 package com.example.mvvm2.ui.main
 
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +10,7 @@ import com.example.mvvm2.data.repository.Repository
 import com.example.mvvm2.data.repository.RepositoryImpl
 import com.example.mvvm2.data.repository.remote.BaseRetrofit
 import com.example.mvvm2.data.repository.remote.MovieRetrofit
+import com.example.mvvm2.ui.history.HistoryActivity
 import retrofit2.Call
 import retrofit2.Response
 
@@ -19,7 +21,6 @@ class MainViewModel :ViewModel() {
 
     fun getMoveList () {
         repository.setHistory(query)
-        Log.d("로그",repository.getHistory().toString())
         repository.getMovieList(query).enqueue(object : retrofit2.Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful){
@@ -30,7 +31,6 @@ class MainViewModel :ViewModel() {
             }
         }
         )
-
     }
 
 }
