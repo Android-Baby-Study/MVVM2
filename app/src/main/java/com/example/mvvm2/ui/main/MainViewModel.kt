@@ -23,7 +23,9 @@ class MainViewModel :ViewModel() {
     val repository: RepositoryImpl = RepositoryImpl()
 
     fun getMoveList () {
-        repository.setHistory(query)
+        if (query.isNotEmpty()) {
+            repository.setHistory(query)
+        }
         repository.getMovieList(query).enqueue(object : retrofit2.Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful){

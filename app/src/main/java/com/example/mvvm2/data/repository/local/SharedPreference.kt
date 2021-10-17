@@ -20,16 +20,13 @@ class SharedPreference(context: Context) {
     }
 
     fun setHistory(h: String) {
-        var history: ArrayList<String>? = getHistory()
-        if (history != null) {
-            if (history.size == 5) {
-                history.removeAt(0)
-            }
+        var history: ArrayList<String>? = if (getHistory().isNullOrEmpty()) arrayListOf() else getHistory()
+        history!!.add(h)
+        history = history.distinct() as ArrayList<String>
+
+        if (history.size == 6) {
+            history.removeAt(0)
         }
-        else {
-            history = arrayListOf()
-        }
-        history.add(h)
         pref.edit().putString(HISTORY, Gson().toJson(history)).apply()
     }
 }
