@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm2.R
 import com.example.mvvm2.databinding.ActivityMainBinding
+import com.example.mvvm2.ui.history.HistoryActivity
 import com.example.mvvm2.ui.moive.MovieActivity
 import javax.security.auth.callback.Callback
 import kotlin.math.log
@@ -26,6 +27,12 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider.NewInstanceFactory()
         )[MainViewModel::class.java]
 
+
+        if (intent.getStringExtra("title") != null) {
+            vm.query = intent.getStringExtra("title").toString()
+            vm.getMoveList()
+        }
+
         // binding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.vm = vm
@@ -35,6 +42,12 @@ class MainActivity : AppCompatActivity() {
                 putExtra("movie", it)
             }
             startActivity(movieIntent)
+        }
+
+        //History button clickListener
+        binding.mainHistoryBtn.setOnClickListener{
+            val historyIntent = Intent(this, HistoryActivity::class.java)
+            startActivity(historyIntent)
         }
     }
 }

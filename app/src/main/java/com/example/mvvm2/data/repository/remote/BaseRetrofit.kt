@@ -1,4 +1,4 @@
-package com.example.mvvm2.data.repository
+package com.example.mvvm2.data.repository.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
