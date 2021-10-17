@@ -15,5 +15,15 @@
         android:layout_height="match_parent"
         tools:context=".ui.history.HistoryActivity">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/history_recycler"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            bind_history_list="@{vm.historyList}"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

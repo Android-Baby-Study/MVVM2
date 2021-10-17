@@ -27,6 +27,12 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider.NewInstanceFactory()
         )[MainViewModel::class.java]
 
+
+        if (intent.getStringExtra("title") != null) {
+            vm.query = intent.getStringExtra("title").toString()
+            vm.getMoveList()
+        }
+
         // binding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.vm = vm

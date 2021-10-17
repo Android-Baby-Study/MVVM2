@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm2.R
 import com.example.mvvm2.databinding.ActivityHistoryBinding
 import com.example.mvvm2.databinding.ActivityMainBinding
+import com.example.mvvm2.ui.main.MainActivity
 import com.example.mvvm2.ui.main.MainRecyclerAdapter
 import com.example.mvvm2.ui.main.MainViewModel
 import com.example.mvvm2.ui.moive.MovieActivity
@@ -24,10 +25,18 @@ class HistoryActivity : AppCompatActivity() {
             this,
             ViewModelProvider.NewInstanceFactory()
         )[HistoryViewModel::class.java]
+        vm.getHistory()
 
         //binding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_history)
         binding.vm = vm
         binding.lifecycleOwner = this
+        binding.historyRecycler.adapter = HistoryRecyclerAdapter(){
+            val mainIntent = Intent(this, MainActivity::class.java).apply {
+                putExtra("title", it)
+            }
+            startActivity(mainIntent)
+        }
+
     }
 }

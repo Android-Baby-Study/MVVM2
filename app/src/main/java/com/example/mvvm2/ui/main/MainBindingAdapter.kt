@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mvvm2.R
 import com.example.mvvm2.data.model.Movie
+import com.example.mvvm2.ui.history.HistoryRecyclerAdapter
 
 @BindingAdapter("bind_movie_list")
 fun setMovie(recyclerView: RecyclerView, movies:ArrayList<Movie>?){
@@ -23,4 +24,11 @@ fun setImage(imageView: ImageView, url:String) {
         .load(url)
         .error(R.drawable.ic_launcher_foreground)
         .into(imageView)
+}
+
+@BindingAdapter("bind_history_list")
+fun setHistory(recyclerView: RecyclerView, histories: ArrayList<String>?) {
+    if (histories != null) {
+        (recyclerView.adapter as HistoryRecyclerAdapter).setItem(histories)
+    }
 }
